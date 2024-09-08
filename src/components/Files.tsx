@@ -54,7 +54,7 @@ const Files: React.FC = () => {
   }, [instance, accounts]);
 
   return (
-    <Layout title="Files" username="JohnDoe">
+    <Layout title="Files" >
       {loading ? (
         <div>Loading...</div>
       ) : (

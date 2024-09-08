@@ -5,14 +5,15 @@ import '../styles/styles.css'; // Import the custom styles
 
 const Layout: React.FC<{
   title: string;
-  username?: string;
   message?: string;
   children: React.ReactNode;
-}> = ({ title, username, message, children }) => {
-
+}> = ({ title, message, children }) => {
   const { instance, accounts } = useMsal();
   const isAuthenticated = accounts.length > 0;
   const navigate = useNavigate();
+
+  // Get the username (e.g., email) from the first account if authenticated
+  const username = isAuthenticated ? accounts[0]?.username : null;
 
   const handleLogin = () => {
     instance.loginPopup()
@@ -31,7 +32,6 @@ const Layout: React.FC<{
   };
 
   useEffect(() => {
-    // Set the document title dynamically
     document.title = title;
   }, [title]);
 
@@ -71,7 +71,12 @@ const Layout: React.FC<{
             {!isAuthenticated ? (
               <button onClick={handleLogin} className="btn btn-primary ml-auto">Login</button>
             ) : (
-              <button onClick={handleLogout} className="btn btn-danger ml-auto">Sign Out ({username || 'User'})</button>
+              <>
+                <span className="navbar-text mr-3">{username}</span> {/* Show the username */}
+                <button onClick={handleLogout} className="btn btn-danger ml-auto">
+                  Sign Out
+                </button>
+              </>
             )}
           </ul>
         </div>

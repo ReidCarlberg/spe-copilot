@@ -3,7 +3,7 @@ import Layout from './Layout'; // Import the Layout component
 
 const PageOne: React.FC = () => {
   return (
-    <Layout title="Home" username="Guest">
+    <Layout title="Home" >
       <h1>SPE Copilot Demo</h1>
       <p>This page is publicly available.</p>
       <p>Signin to continue.</p>

@@ -45,7 +45,7 @@ const Containers: React.FC = () => {
   }, [instance, accounts]);
 
   return (
-    <Layout title="Containers" username="JohnDoe">
+    <Layout title="Containers" >
       {loading ? (
         <div>Loading...</div>
       ) : (

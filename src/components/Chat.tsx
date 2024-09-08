@@ -50,7 +50,7 @@ const Chat: React.FC = () => {
   }, [chatApi]);
 
   return (
-    <Layout title="Chat" username="JohnDoe">
+    <Layout title="Chat" >
       <h1>SharePoint Embedded copilot private preview</h1>
     
       {/* ChatEmbedded component from SDK */}
