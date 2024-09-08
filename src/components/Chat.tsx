@@ -51,9 +51,8 @@ const Chat: React.FC = () => {
 
   return (
     <Layout title="Chat" username="JohnDoe">
-      <h1>Chat Page</h1>
-      <p>This is where the chat feature will be embedded.</p>
-
+      <h1>SharePoint Embedded copilot private preview</h1>
+    
       {/* ChatEmbedded component from SDK */}
       <ChatEmbedded
         authProvider={authProvider}

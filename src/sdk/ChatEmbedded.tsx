@@ -54,6 +54,6 @@ export default function ChatEmbedded(props: ChatEmbeddedProps) {
     }, [authProvider, onApiReady, onNotification, chatApi]);
 
     return (
-        <iframe title="copilot" style={{ width: 'calc(100% - 4px)', height: 'calc(100vh - 8px)' }} ref={onIFrameRef} />
+        <iframe title="copilot" style={{ width: 'calc(100% - 100px)', height: 'calc(100vh - 100px)' }} ref={onIFrameRef} />
     );
 }

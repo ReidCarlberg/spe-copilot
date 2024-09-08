@@ -1,0 +1,30 @@
+.navbar-custom {
+    background-color: royalblue;
+  }
+  
+  .navbar-custom .navbar-nav .nav-link {
+    color: white !important;
+  }
+  
+  .navbar-custom .navbar-brand {
+    color: white !important;
+  }
+  
+  .navbar-custom .btn-primary {
+    background-color: white;
+    color: royalblue;
+    border-color: royalblue;
+  }
+  
+  .navbar-custom .btn-danger {
+    background-color: white;
+    color: royalblue;
+    border-color: royalblue;
+  }
+  
+  .navbar-custom .btn-primary:hover,
+  .navbar-custom .btn-danger:hover {
+    background-color: royalblue;
+    color: white;
+  }
+  

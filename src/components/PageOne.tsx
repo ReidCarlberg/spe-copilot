@@ -1,11 +1,13 @@
 import React from 'react';
+import Layout from './Layout'; // Import the Layout component
 
 const PageOne: React.FC = () => {
   return (
-    <div>
-      <h1>Page One</h1>
+    <Layout title="Home" username="Guest">
+      <h1>SPE Copilot Demo</h1>
       <p>This page is publicly available.</p>
-    </div>
+      <p>Signin to continue.</p>
+    </Layout>
   );
 };
 
