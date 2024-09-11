@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useMsal } from '@azure/msal-react';
 import Layout from './Layout'; // Import Layout component
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom to handle navigation
 
 interface Container {
   id: string;
@@ -45,7 +46,7 @@ const Containers: React.FC = () => {
   }, [instance, accounts]);
 
   return (
-    <Layout title="Containers" >
+    <Layout title="Containers">
       {loading ? (
         <div>Loading...</div>
       ) : (
@@ -57,6 +58,7 @@ const Containers: React.FC = () => {
                 <th>ID</th>
                 <th>Name</th>
                 <th>Created Date</th>
+                <th>Chat Link</th> {/* New column for chat link */}
               </tr>
             </thead>
             <tbody>
@@ -65,6 +67,10 @@ const Containers: React.FC = () => {
                   <td>{container.id}</td>
                   <td>{container.displayName}</td>
                   <td>{new Date(container.createdDateTime).toLocaleDateString()}</td>
+                  <td>
+                    {/* Link to Chat with the containerId */}
+                    <Link to={`/chat?containerId=${container.id}`}>Open Chat</Link>
+                  </td>
                 </tr>
               ))}
             </tbody>

@@ -39,6 +39,8 @@ const Layout: React.FC<{
     <div>
       <nav className="navbar navbar-expand-lg navbar-custom"> {/* Apply navbar-custom class */}
         <a className="navbar-brand" href="/">SPE Copilot Sample (for private preview)</a>
+        
+        {/* Hamburger toggle button for mobile */}
         <button
           className="navbar-toggler"
           type="button"
@@ -50,8 +52,10 @@ const Layout: React.FC<{
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+        
+        {/* Collapsible navbar */}
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
+          <ul className="navbar-nav mr-auto">
             <li className="nav-item">
               <Link className="nav-link" to="/">Home</Link>
             </li>
@@ -68,14 +72,16 @@ const Layout: React.FC<{
                 </li>
               </>
             )}
+          </ul>
+
+          {/* Login/Logout section */}
+          <ul className="navbar-nav ml-auto">
             {!isAuthenticated ? (
-              <button onClick={handleLogin} className="btn btn-primary ml-auto">Login</button>
+              <button onClick={handleLogin} className="btn btn-primary">Login</button>
             ) : (
               <>
                 <span className="navbar-text mr-3">{username}</span> {/* Show the username */}
-                <button onClick={handleLogout} className="btn btn-danger ml-auto">
-                  Sign Out
-                </button>
+                <button onClick={handleLogout} className="btn btn-danger">Sign Out</button>
               </>
             )}
           </ul>
