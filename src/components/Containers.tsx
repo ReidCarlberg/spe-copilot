@@ -55,21 +55,19 @@ const Containers: React.FC = () => {
           <table className="table">
             <thead>
               <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Created Date</th>
-                <th>Chat Link</th> {/* New column for chat link */}
+                <th>Custom copilot</th> {/* New column for chat link */}
               </tr>
             </thead>
             <tbody>
               {containers.map((container) => (
                 <tr key={container.id}>
-                  <td>{container.id}</td>
                   <td>{container.displayName}</td>
                   <td>{new Date(container.createdDateTime).toLocaleDateString()}</td>
                   <td>
                     {/* Link to Chat with the containerId */}
-                    <Link to={`/chat?containerId=${container.id}`}>Open Chat</Link>
+                    <Link to={`/Find?containerId=${container.id}`}>Open copilot</Link>
                   </td>
                 </tr>
               ))}

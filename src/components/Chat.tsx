@@ -3,10 +3,18 @@ import Layout from './Layout';  // Import the Layout component
 import ChatEmbedded, { ChatEmbeddedAPI, IChatEmbeddedApiAuthProvider } from '../sdk/ChatEmbedded'; // Import the necessary SDK components
 import { useMsal } from '@azure/msal-react';
 import { DataSourceType, IDataSourcesProps } from '../sdk/types'; // Import the necessary types for data sources
+import { useSearchParams } from 'react-router-dom';  // To handle query parameters
 
 const Chat: React.FC = () => {
   const { instance, accounts } = useMsal();
   const [chatApi, setChatApi] = useState<ChatEmbeddedAPI | null>(null);
+  const [searchParams] = useSearchParams();  // Use to get URL parameters
+
+  // Get the "library" and "name" parameters from the URL
+  const libraryUrl = searchParams.get('library');
+  const libraryName = searchParams.get('name');
+  console.log('Library URL:', libraryUrl); // Log the URL parameter for debugging
+  console.log('Library Name:', libraryName); // Log the library name for debugging
 
   // Define the authProvider object using the interface
   const authProvider: IChatEmbeddedApiAuthProvider = {
@@ -39,20 +47,24 @@ const Chat: React.FC = () => {
         try {
           console.log('Chat API is ready'); 
 
-          // Hardcoded document library data source
-          const documentLibraryDataSource: IDataSourcesProps = {
-            type: DataSourceType.DocumentLibrary,
-            value: {
-              name: 'Document Library',  // Use a descriptive name here
-              url: 'https://greenwoodeccentrics.sharepoint.com/contentstorage/CSP_65ec6cad-c575-4358-9e78-fdf56d213905/Document%20Library',  // Hardcoded URL
-            },
-          };
+          // Only set the data source if libraryUrl is available
+          if (libraryUrl) {
+            const documentLibraryDataSource: IDataSourcesProps = {
+              type: DataSourceType.DocumentLibrary,
+              value: {
+                name: libraryName || 'Document Library',  // Use the libraryName or a default name
+                url: libraryUrl,  // Use the libraryUrl from the query parameter
+              },
+            };
 
-          // Set the data sources before opening the chat
-          chatApi.setDataSources([documentLibraryDataSource]);
-          console.log('Document Library data source set:', documentLibraryDataSource);
+            // Set the data sources before opening the chat
+            chatApi.setDataSources([documentLibraryDataSource]);
+            console.log('Document Library data source set:', documentLibraryDataSource);
+          } else {
+            console.log('No library URL provided, opening chat without a specific data source.');
+          }
 
-          // Open the chat after setting data sources
+          // Open the chat after setting data sources (if available)
           await chatApi.openChat();
           console.log('Chat opened successfully');
         } catch (error) {
@@ -64,11 +76,14 @@ const Chat: React.FC = () => {
     };
 
     initializeChat();
-  }, [chatApi]);
+  }, [chatApi, libraryUrl, libraryName]);  // Run the effect when the chatApi, libraryUrl, or libraryName changes
 
   return (
     <Layout title="Chat">
-      <h1>SharePoint Embedded copilot private preview</h1>
+      <p className="h2">
+        SharePoint Embedded copilot private preview
+        {libraryName && ` - ${libraryName}`} {/* Conditionally render library name */}
+      </p>
     
       {/* ChatEmbedded component from SDK */}
       <ChatEmbedded

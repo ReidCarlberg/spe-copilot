@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import PageOne from './components/PageOne';
 import PageTwo from './components/PageTwo';
 import Containers from './components/Containers';
+import Find from './components/Find';
 import Files from './components/Files';
 import Chat from './components/Chat'; // Import the Chat component
 import ProtectedRoute from './components/ProtectedRoute';  // Import ProtectedRoute
@@ -33,6 +34,14 @@ const App: React.FC = () => {
           element={
             <ProtectedRoute>
               <Files />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/find"
+          element={
+            <ProtectedRoute>
+              <Find />
             </ProtectedRoute>
           }
         />

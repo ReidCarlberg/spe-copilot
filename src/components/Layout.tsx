@@ -65,9 +65,6 @@ const Layout: React.FC<{
                   <Link className="nav-link" to="/containers">Containers</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/files">Files</Link>
-                </li>
-                <li className="nav-item">
                   <Link className="nav-link" to="/chat">Chat</Link>
                 </li>
               </>
