@@ -19,4 +19,6 @@ This is not Microsoft product or suitable for production workloads.
 # Getting Started
 
 * Copy .env_template to .env.local and enter in the correct values.
+* npm install will get all the libraries up to date
+* npm start will start up the demo server
 
