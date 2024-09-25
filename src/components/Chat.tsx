@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Layout from './Layout';  // Import the Layout component
 import ChatEmbedded, { ChatEmbeddedAPI, IChatEmbeddedApiAuthProvider } from '../sdk/ChatEmbedded'; // Import the necessary SDK components
 import { useMsal } from '@azure/msal-react';
-import { DataSourceType, IDataSourcesProps } from '../sdk/types'; // Import the necessary types for data sources
+import { DataSourceType, IDataSourcesProps, ICustomPrompts  } from '../sdk/types'; // Import the necessary types for data sources
 import { useSearchParams } from 'react-router-dom';  // To handle query parameters
 
 const Chat: React.FC = () => {
@@ -63,6 +63,19 @@ const Chat: React.FC = () => {
           } else {
             console.log('No library URL provided, opening chat without a specific data source.');
           }
+
+          // Define the custom promptsnpm
+          const customPrompts: ICustomPrompts = {
+            suggestedPrompts: [
+              'Show me resumes',
+              'Tell me about historical facts',
+              'What\'s the economic history',
+            ],
+          };
+
+          // Set custom prompts
+          chatApi.setSuggestedPrompts(["Show me resumes", "Tell me about historical facts", "What's the economic history"]);  
+          //console.log('Custom prompts set:', customPrompts);
 
           // Open the chat after setting data sources (if available)
           await chatApi.openChat();
