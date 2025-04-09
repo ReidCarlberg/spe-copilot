@@ -75,7 +75,7 @@ const Chat: React.FC = () => {
           setChatApi(api);
         }}
         containerId={containerId}
-        style={{ width: 'calc(100% - 4px)', height: 'calc(100vh - 8px)' }}
+        style={{ width: 'calc(100% - 4px)', height: 'calc(100vh - 20vh)' }}
       />
     </Layout>
   );
