@@ -67,7 +67,7 @@ const Containers: React.FC = () => {
                   <td>{new Date(container.createdDateTime).toLocaleDateString()}</td>
                   <td>
                     {/* Link to Chat with the containerId */}
-                    <Link to={`/Find?containerId=${container.id}`}>Open copilot</Link>
+                    <Link to={`/Chat?containerId=${container.id}`}>Open copilot</Link>
                   </td>
                 </tr>
               ))}

@@ -18,7 +18,7 @@ const Layout: React.FC<{
   const handleLogin = () => {
     instance.loginPopup()
       .then(() => {
-        navigate('/chat');
+        navigate('/containers');
       })
       .catch((e) => {
         console.error(e);
